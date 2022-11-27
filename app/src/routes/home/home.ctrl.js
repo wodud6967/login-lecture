@@ -1,5 +1,7 @@
 "use strict"
 
+const UserStorage = require("../../models/UserStorage");
+
 //헬로라는 컨트롤러 함수를 만들어주고 이를 외부에서 사용한다.
 const output = {
      home: (req, res)=>{
@@ -10,10 +12,7 @@ const output = {
     },
 }
 
-const users = {
-    id: ["wodud", "kang", "wodud6967"],
-    psword: ["123", "123", "123"],
-};
+
 
 const process = {
   
@@ -22,19 +21,22 @@ const process = {
         
         const id = req.body.id;
         const psword = req.body.psword;
+
+        
+
+        const users = UserStorage.getUser("id","psword"); 
+        const response = {};
      
         if(users.id.includes(id)){
             const idx = users.id.indexOf(id);
             if(users.psword[idx]===psword){
-                return res.json({
-                    success: true,
-                });
+                response.success = true;
+                return res.json(response);
             }
         }
-        return res.json({
-            success: false,
-            msg: "로그인에 실패하셨습니다."
-        });
+         response.success = false;
+         response.msg = "로그인에 실패하셨습니다";
+         return res.json(response);
    }
 }
 
