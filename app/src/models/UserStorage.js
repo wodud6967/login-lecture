@@ -18,6 +18,21 @@ class UserStorage{
        
         return newUsers;
     }
+    static getUserInfo(id){
+        const user = this.#users;
+        console.log("유저참조"+user["id"]);
+        const idx = user.id.indexOf(id);
+        console.log("idx 값 :" + idx);
+        const userKeys = Object.keys(user); // =>[id, psword, name] 
+        const userInfo = userKeys.reduce((newUser, info) =>{
+            console.log("인포값: "+info);
+            newUser[info] = user[info][idx];
+            return newUser;
+        }, {});
+
+        console.log("유저인포최종값: "+ userInfo);
+     return userInfo;
+    }
 }
 
 module.exports = UserStorage;
