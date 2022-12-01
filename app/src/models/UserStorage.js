@@ -33,6 +33,14 @@ class UserStorage{
         console.log("유저인포최종값: "+ userInfo);
      return userInfo;
     }
+    static save(userinfo){
+        const user = this.#users;
+        user.id.push(userinfo.id);
+        user.psword.push(userinfo.psword);
+        user.name.push(userinfo.name);
+        
+        return{success: true};
+    }
 }
 
 module.exports = UserStorage;
