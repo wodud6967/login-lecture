@@ -7,11 +7,10 @@ class User{
         this.body = body;
        
     }
-    login() {
+    async login() {
        const client = this.body;
-       console.log("바디값: " + client.id);
-       const{id, psword} = UserStorage.getUserInfo(client.id);
-       console.log(id, psword);
+      
+       const{id, psword} = await UserStorage.getUserInfo(client.id);      
 
       if(id){
         if(id === client.id && psword === client.psword){
