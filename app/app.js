@@ -17,6 +17,9 @@
 
 // 모듈
 const express = require("express");
+//os 운영시스템에 등록되는 변수라서 환경변수라고 한다.
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
 
@@ -28,6 +31,7 @@ const home = require("../app/src/routes/home");//우리가 만든 자바스크�
 //앱세팅
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
+
 
 
 app.use(express.json());

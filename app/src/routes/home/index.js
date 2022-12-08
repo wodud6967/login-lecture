@@ -1,5 +1,10 @@
 //mvc에서 c 컨트롤러 분리했음
 "use strict"
+// const db = require("../../config/db");
+// db.query("SELECT * FROM USERS", (err, data) =>{
+//     console.log("dddddd");
+//     console.log(data);
+//   });
 const express = require("express");
 const router = express.Router();
 

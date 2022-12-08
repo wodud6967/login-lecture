@@ -14,7 +14,7 @@ registerbtn.addEventListener("click", register);
 
 function register(){
     if(!id.value) return alert("아이뒤를 입력해주십시오")
-    if(psword !== confirmPsword) alert("비밀번호가 일치하지 않습니다.");
+    if(psword.value !== confirmPsword.value) alert("비밀번호가 일치하지 않습니다.");
     
     
     const req = {
@@ -41,7 +41,9 @@ function register(){
         }
     })
     .catch((err) =>{
-        console.error(new Error("회원가입중 에러발생"));
+        console.error("회원가입중 에러발생");
+        console.log("fdsfsd");
+       
     })
 }
 
