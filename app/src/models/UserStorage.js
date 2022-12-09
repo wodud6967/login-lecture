@@ -12,8 +12,7 @@ class UserStorage{
         const query ="SELECT * FROM USERS WHERE id = ?;";
           db.query(query, [id], (err, data) =>{
           if(err) reject(`${err}`);
-          console.log(data);
-          resolve(data[0]);
+          else resolve(data[0]);
         });
       });  
     }
@@ -25,7 +24,7 @@ class UserStorage{
         const query ="INSERT INTO USERS(id, name, psword) VALUES(?, ?, ?);";
           db.query(query, [userinfo.id, userinfo.name, userinfo.psword], (err) =>{
           if(err) reject(`${err}`);//문자열로 바꿔서 안바꾸면 오브젝트로 반환한다.
-          resolve({success: true});
+          else resolve({success: true});
         });
       });  
     }

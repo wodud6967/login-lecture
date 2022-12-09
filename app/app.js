@@ -19,8 +19,10 @@
 const express = require("express");
 //os 운영시스템에 등록되는 변수라서 환경변수라고 한다.
 const dotenv = require("dotenv");
-//const morgan = require('morgan');
-const fs = require('fs');
+const morgan = require('morgan');
+const logger = require('./src/config/logger');
+
+
 
 const app = express();
 dotenv.config();
@@ -46,7 +48,7 @@ app.use(express.static(__dirname+'/src/public'));
 
 //모겐 로그 모듈
 // app.use(morgan("dev"));
-// app.use(morgan('common', {stream: accessLogStream}));
+ app.use(morgan('common', {stream: logger.stream}));
 
 // console.log("이거"+__dirname);
 
